@@ -6,6 +6,13 @@ Rails.application.routes.draw do
     end
   end
 
+  constraints subdomain: "agent" do
+    namespace :agent do
+      resources :welcomes
+      root to: "welcomes#index", as: "agent"
+    end
+  end
+
   constraints subdomain: false do
     root to: "pings#index", as: "root"
   end
